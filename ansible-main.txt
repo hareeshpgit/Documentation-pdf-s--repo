@@ -1,0 +1,71 @@
+Ansible is a free and open source IT software that automates software provisioning, configuration management, and application deployment. One can use Ansible to create cloud hosts in EC2, patch servers, add users, configure routers/firewall and more. Ansible uses SSH which allows users and ansbile too; to log in to remote servers and perform management tasks. This page shows how to already setup SSH keys to log in into remote server using Ansible IT automation tool.
+/root/.jenkins/secrets/initialAdminPassword -- secret password
+
+https://www.cyberciti.biz/faq/linux-unix-osx-bsd-ssh-run-command-on-remote-machine-server/ -link
+https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands/
+
+2nd- method ---
+Take server and node two instances 
+
+1-  ssh-keygen --server
+    ls -la
+    cd .ssh
+2- ssh-keygen --node 
+   ls -la 
+   cd .ssh 
+   --> cat id_pub.rsa --copy and paste in node machine authorized keys at the top) we can copy in any nodes then only main n-server can establish the communication.
+
+3- install ansible related packages 
+
+-- sudo amazon-linux-extras enable ansible2 -y --- linux2 ami
+-- yum install ansible -y --
+
+in-server
+hostnamectl set-hostname ans-server
+    2  exec bash
+    3  ssh-keygen
+    4  ls -la
+    5  cd .ssh
+    6  ls
+    7  cat authorized_keys 
+    8  cat id_rsa.pub 
+    9  cd
+   10  ssh 172.31.22.29
+   11  ls
+   12  ls -la
+   13  cd .ssh/
+   14  ls
+   15  cd
+   16  sudo amazon-linux-extras enable ansible2 -y
+   17  sudo yum install -y ansible -y
+   18  ansible --version
+   19  python --version
+   
+     cd /etc/ansible/
+     ls
+     vi hosts 
+     ansible all -m ping 
+     ansible all --list-hosts
+
+in -node machine--
+hostnamectl set-hostname ans-node
+    2  exec bash
+    3  ssh-keygen
+    4  ls
+    5  ls -la
+    6  cd .ssh
+    7  ls
+    8  vi authorized_keys 
+    9  ls
+   10  cd
+   11  history
+
+
+
+sudo yum install yum-utils   --1
+sudo yum-complete-transaction --cleanup-only                 --2 -(Ansible Yum Module pending transactions error) - 
+
+
+An operating system is system software that manages computer hardware and software resources, and provides common services for computer programs.
+kernel --
+kernel is the main component of a Linux operating system (OS) and is the core interface between a computer’s hardware and its processes. It communicates between the 2, managing resources as efficiently as possible.

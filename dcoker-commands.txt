@@ -1,0 +1,7 @@
+docker stop devops-container; docker rm devops-container; docker rmi devops-image;
+cd /home/dockeradmin/target; docker build -t devops-image .; docker run -d --name devops-container -p 80:8080 devops-image;
+
+
+
+docker tag nginx-image:latest hareeshpdocker/docker-nginx:newtag
+docker push hareeshpdocker/docker-nginx:newtag
